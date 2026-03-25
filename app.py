@@ -5,15 +5,32 @@ from typing import Any, Dict, List, Optional
 import pandas as pd
 import streamlit as st
 
-from rcuk_contact_manager.core import (
-    df_to_contacts,
-    export_vcf,
-    find_duplicates,
-    load_spreadsheet,
-    merge_contacts,
-    parse_file,
-    parse_vcf,
-)
+# ------------------------------------------------------------
+# Import bridge
+# Works with either:
+# 1) rcuk_contact_manager/core.py
+# 2) single-file contact_manager.py
+# ------------------------------------------------------------
+try:
+    from rcuk_contact_manager.core import (
+        df_to_contacts,
+        export_vcf,
+        find_duplicates,
+        load_spreadsheet,
+        merge_contacts,
+        parse_file,
+        parse_vcf,
+    )
+except ImportError:
+    from contact_manager import (
+        df_to_contacts,
+        export_vcf,
+        find_duplicates,
+        load_spreadsheet,
+        merge_contacts,
+        parse_file,
+        parse_vcf,
+    )
 
 
 APP_NAME = "YJ - RCUK CONTACT MANAGER"
